@@ -9,49 +9,11 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="vu-consentform.css">
 	<script>
-
-// Array of 6 CBWN condition URLs
-var cbwn_urls = [
-    'https://fpjw3vxqme.cognition.run/', // Condition 1: DEUT set A TRITAN set B to TRITAN set B DEUT set A
-  // 'https://m1c71jc3tx.cognition.run/', // Condition 2: DEUT UNFIL to UNFIL DEUT
-  // 'https://ljutt3heje.cognition.run/', // Condition 3: UNFIL DEUT to DEUT UNFIL
-   // 'https://5lf566yzmm.cognition.run/', // Condition 4: UNFIL TRITAN to TRITAN UNFIL
-   //'https://to2jb6u9bz.cognition.run/', // Condition 5: TRITAN DEUT to DEUT TRITAN
-   // 'https://orhbdjsrnl.cognition.run/'  // Condition 6: DEUT TRITAN to TRITAN DEUT
-];
-
-// Get participant ID from URL (Prolific or MTurk)
-var urlParams = new URLSearchParams(window.location.search);
-var participantID = urlParams.get('PROLIFIC_PID') || urlParams.get('workerId') || urlParams.get('participant_id');
-
-// Improved hash function with better distribution
-function hashCode(str) {
-    // Add a salt to reduce patterns in participant IDs
-    str = "cbwn_study_2024_" + str;
-    var hash = 0;
-    for (var i = 0; i < str.length; i++) {
-        var char = str.charCodeAt(i);
-        hash = ((hash << 5) - hash) + char;
-        hash = hash & hash; // Convert to 32bit integer
-    }
-    // Use additional mixing to improve distribution
-    hash = Math.abs(hash);
-    hash = ((hash * 2654435761) >>> 0) % 2147483647;
-    return hash;
-}
-
-// Assign to condition based on participant ID
-var conditionIndex = participantID ? hashCode(participantID) % 6 : Math.floor(Math.random() * 6);
-var test_url = cbwn_urls[conditionIndex];
-
-// Preserve any query parameters from the current URL
-if (window.location.search.length > 0) {
-    test_url = test_url + (test_url.includes('?') ? '&' : '?') + window.location.search.substring(1);
-}
-
-function accept_clicked() { 
-    location.href = test_url; 
-}
+		var test_url = 'https://vwfcqr6tot.cognition.run'; //CB WITHIN 6
+		if (window.location.search.length > 0) {
+			test_url = test_url + (test_url.includes('?') ? '&' : '?') + window.location.search.substring(1);
+		}
+		function accept_clicked() { location.href = test_url; }
 	</script>
 </head>
 
@@ -68,7 +30,7 @@ function accept_clicked() {
 			information
 			about yourself (e.g., sex, age, race, native language, highest level of education completed).</p>
 
-	<p style="margin-bottom: 0;">The study can include the following tasks (but possibly not all of them):
+	<p style="margin-bottom: 0;">The study can include the following tasks (but possibility not all of them):
 	</p>
 	<p style="padding-left: 32pt;"><b>Surveys</b> including questions about your personality, your attitudes and
 		your experience in a
